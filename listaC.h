@@ -87,6 +87,8 @@ void showListFL(List* list); //muestra la lista adelante hacia atras
  * @param List* list, corresponde a la lsita que se desea mostrar.
 */
 void showListLF(List* list); //muestra la lista desde atras hacia delante
+List* listcpy(List* list);
+
 
 //IMPLEMENTACION DE COLA CON ESTA LISTA (ADAPTACION)
 /*
