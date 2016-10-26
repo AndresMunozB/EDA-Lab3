@@ -268,7 +268,7 @@ void centralidadGrado(Grafo* grafo){
 	for (i=max;i>=0;i--){
 		for (j=0;j<grafo->vertices;j++){
 			if(grafo->marcas[j]==i){
-				printf("Nodo %d: grado %d\n",j+1,i );
+				printf("Vertice %d: grado %d\n",j+1,i );
 			}
 		}
 	}

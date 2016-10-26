@@ -29,7 +29,7 @@ int main(){
 				
 				memset(nameFile,'0',255);
 				//char stringBuffer[LARGOLINE];
-				printf("Ingrese el nombre de un archivo: ");
+				printf("\nIngrese el nombre de un archivo: ");
 				scanf("%s", nameFile);
 				
 				//printf("cargar grafo \n");
@@ -38,11 +38,11 @@ int main(){
 						destruirGrafo(grafo);
 					}
 					grafo=cargarGrafo(nameFile);
-					printf("Grafo cargado\n");
+					printf("Grafo cargado\n\n");
 					
 				}
 				else{
-					printf("El archivo no existe\n");
+					printf("El archivo no existe\n\n");
 				}
 				break;
 			case 2:
@@ -51,7 +51,7 @@ int main(){
 					mostrarGrafo(grafo);
 				}
 				else{
-					printf("No existe ningun grafo cargado\n");
+					printf("\nNo existe ningun grafo cargado\n\n");
 				}
 				
 				break;
@@ -60,14 +60,14 @@ int main(){
 				//printf("verificar grafo conexo\n");
 				if(grafo!=NULL){
 					if(verificarConexo(grafo)){
-						printf("El grafo es conexo\n");
+						printf("\nEl grafo es conexo\n\n");
 					}
 					else{
-						printf("El grafo NO es conexo\n");
+						printf("\nEl grafo NO es conexo\n\n");
 					}
 				}
 				else{
-					printf("No existe ningun grafo cargado\n");
+					printf("\nNo existe ningun grafo cargado\n\n");
 				}
 				
 				break;
@@ -79,7 +79,7 @@ int main(){
 					printf("\n");
 				}
 				else{
-					printf("No existe ningun grafo cargado\n");
+					printf("\nNo existe ningun grafo cargado\n\n");
 				}
 				
 				break;
