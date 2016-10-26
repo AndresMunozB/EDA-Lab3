@@ -103,6 +103,14 @@ int verificarConexo(Grafo* grafo);
 */
 void centralidadGrado(Grafo* grafo);
 
+/*
+ * Funcion grafocpy
+ * funcion que copia un grafo
+ * @param Grafo* grafo, grafo a copiar
+ * @return grafo copiado.
+*/
+Grafo* grafocpy(Grafo* grafo);
+
 
 
 

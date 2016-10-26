@@ -93,8 +93,8 @@ int main(){
 
 	}while(opcion!=6);
 
-	Grafo* copia=(Grafo*)grafocpy(grafo);
-	mostrarGrafo(copia);
+	//Grafo* copia=(Grafo*)grafocpy(grafo);
+	//mostrarGrafo(copia);
 
 
 	
