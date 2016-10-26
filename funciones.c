@@ -28,7 +28,10 @@ int existsFile(char* filename) {
  * Funcion rtrim
 */
 void rtrim(char* string){
-	while(string[strlen(string)-1]==' ' || string[strlen(string)-1]=='\n'){
+	while(string[strlen(string)-1]==' ' 
+		|| string[strlen(string)-1]=='\n' 
+		|| string[strlen(string)-1]=='\t'
+		|| string[strlen(string)-1]=='\r'){
 		string[strlen(string)-1]='\0';
 	}
 }
@@ -101,6 +104,7 @@ void destruirGrafo(Grafo* grafo){
 	free(grafo);
 }
 
+
 void mostrarGrafo(Grafo* grafo){
 	printf("\nGRAFO: \n");
 
@@ -109,18 +113,25 @@ void mostrarGrafo(Grafo* grafo){
 	printf("Lista adyacencia: \n" );
 	int i,j;
 	for (i=0;i<grafo->vertices;i++){
-		printf("Vertice %d: ",i );
-		showListFL(grafo->ListAdy[i]);
+		printf("Vertice %d: ",i+1 );
+		for (j=0;j<grafo->ListAdy[i]->length;j++){
+			printf("%d ",getNumber(grafo->ListAdy[i],j)+1 );
+		}
+		printf("\n");
+
+
+		//printf("Vertice %d: ",i );
+		//showListFL(grafo->ListAdy[i]);
 	}
 
 	printf("Matriz de adyacencia: \n");
 	showMatriz(grafo->matrizAdy,grafo->vertices);
 
-	printf("Marcas: ");
+	/*printf("Marcas: ");
 	for (i = 0; i < grafo->vertices; ++i)
 	{
 		printf("%d ",grafo->marcas[i] );	
-	}
+	}*/
 	printf("\n\n");
 
 }
@@ -141,7 +152,7 @@ void verticesAdy(List* lista,char* string){
 			memset(charBuffer,'0',100);
 			memcpy(charBuffer,&string[inicio],fin);
 			intBuffer=atoi(charBuffer);
-			add(lista,intBuffer);
+			add(lista,intBuffer-1);
 			inicio=fin;
 
 		}   	
@@ -151,7 +162,7 @@ void verticesAdy(List* lista,char* string){
 		memset(charBuffer,'0',100);
 		memcpy(charBuffer,&string[inicio],strlen(string));
 		intBuffer=atoi(charBuffer);
-		add(lista,intBuffer);
+		add(lista,intBuffer-1);
 	}
 	deleteNodo(lista,0);
 }
@@ -222,6 +233,7 @@ void busqueda(Grafo* grafo,int vertice){
 
 }
 
+
 /*
  * Funcion verificar conexo
 */
@@ -256,12 +268,56 @@ void centralidadGrado(Grafo* grafo){
 	for (i=max;i>=0;i--){
 		for (j=0;j<grafo->vertices;j++){
 			if(grafo->marcas[j]==i){
-				printf("Nodo %d: grado %d\n",j,i );
+				printf("Nodo %d: grado %d\n",j+1,i );
 			}
 		}
 	}
 }
 
+Grafo* grafocpy(Grafo* grafo){
+	Grafo* copia=inicializarGrafo(grafo->vertices);
+	int i,j;
+	for (i=0;i<grafo->vertices;i++){
+		copia->ListAdy[i]=(List*)listcpy(grafo->ListAdy[i]);
+	}
+	for (i=0;i<grafo->vertices;i++){
+		for (j=0;j<grafo->vertices;j++){
+			copia->matrizAdy[i][j]=grafo->matrizAdy[i][j];
+		}
+	}
+	return copia;
+
+
+}
+
+/*void busquedaCaminos(Grafo* grafo){
+	int i;
+	for (i=0;i<grafo->vertices;i++){
+		grafo->marcas[i]=0;
+	}
+
+	List* cola= (List*) createList();
+	encolar(cola,vertice);
+	int v,w;
+	while(!(vacia(cola))){
+		v= inicio(cola);
+		grafo->marcas[v]=2;
+		for (i=0;i<grafo->ListAdy[v]->length;i++){
+			w=getNumber(grafo->ListAdy[v],i);
+			if (grafo->marcas[w]==0){
+				grafo->marcas[w]=1;
+				encolar(cola,w);
+
+			}
+		}
+		desencolar(cola);
+	}
+}*/
+
+
+int* betweenness(int s, int t, int nodo){
+
+}
 
 
 
