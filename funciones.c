@@ -290,34 +290,6 @@ Grafo* grafocpy(Grafo* grafo){
 
 }
 
-/*void busquedaCaminos(Grafo* grafo){
-	int i;
-	for (i=0;i<grafo->vertices;i++){
-		grafo->marcas[i]=0;
-	}
-
-	List* cola= (List*) createList();
-	encolar(cola,vertice);
-	int v,w;
-	while(!(vacia(cola))){
-		v= inicio(cola);
-		grafo->marcas[v]=2;
-		for (i=0;i<grafo->ListAdy[v]->length;i++){
-			w=getNumber(grafo->ListAdy[v],i);
-			if (grafo->marcas[w]==0){
-				grafo->marcas[w]=1;
-				encolar(cola,w);
-
-			}
-		}
-		desencolar(cola);
-	}
-}*/
-
-
-int* betweenness(int s, int t, int nodo){
-
-}
 
 
 
